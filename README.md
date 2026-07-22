@@ -7,6 +7,16 @@ doc-RAG is a chatbot that answers questions about your own documents (PDF, DOCX,
 1. **Document processing**: [Docling](https://github.com/DS4SD/docling) reads the document and splits it into chunks.
 2. **Retrieval**: the chunks are indexed with a hybrid retriever (vector search + BM25) using Chroma.
 3. **Agents with LangGraph**: agent orchestration (check relevance → research → verify) is handled with [LangGraph](https://github.com/langchain-ai/langgraph), which decides whether to re-run the research step based on the verification result.
+
+```mermaid
+graph TD
+    start((start)) --> check_relevance{check_relevance}
+    check_relevance -->|relevant| research[research]
+    research --> verify[verify]
+    verify -.->|re_research| research
+    verify -.->|end| END((END))
+    check_relevance -.->|irrelevant| END
+```
 4. **Free IBM models**: the agents use the [IBM watsonx.ai SDK](https://pypi.org/project/ibm-watsonx-ai/) to call models like **Llama 3.3** (to draft the answer) and **Granite** (to verify it), for free through the skills-network project.
 5. **Interface**: the app runs on [Gradio](https://www.gradio.app/).
 
