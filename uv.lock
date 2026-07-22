@@ -449,7 +449,7 @@ wheels = [
 ]
 
 [[package]]
-name = "docchat"
+name = "doc-rag"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -3,6 +3,7 @@ __pycache__/
 .env
 chroma_db/
 venv/
+.gradio/
 app.log
 document_cache/
 *.ipynb

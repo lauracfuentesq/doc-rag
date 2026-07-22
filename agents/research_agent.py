@@ -6,8 +6,10 @@ from config.settings import settings
 import json
 
 credentials = Credentials(
-                   url = "https://us-south.ml.cloud.ibm.com",
+                   url = settings.WATSONX_URL,
+                   api_key= settings.WATSONX_API_KEY
                   )
+
 client = APIClient(credentials)
 
 
@@ -19,9 +21,9 @@ class ResearchAgent:
         # Initialize the WatsonX ModelInference
         print("Initializing ResearchAgent with IBM WatsonX ModelInference...")
         self.model = ModelInference(
-            model_id="meta-llama/llama-3-2-90b-vision-instruct", 
+            model_id="meta-llama/llama-3-3-70b-instruct", 
             credentials=credentials,
-            project_id="skills-network",
+            project_id=settings.WATSONX_PROJECT_ID,
             params={
                 "max_tokens": 300,            # Adjust based on desired response length
                 "temperature": 0.3,           # Controls randomness; lower values make output more deterministic

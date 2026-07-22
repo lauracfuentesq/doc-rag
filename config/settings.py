@@ -3,6 +3,10 @@ from .constants import MAX_FILE_SIZE, MAX_TOTAL_SIZE, ALLOWED_TYPES
 
 class Settings(BaseSettings):
 
+    WATSONX_API_KEY: str
+    WATSONX_URL: str = "https://eu-de.ml.cloud.ibm.com"
+    WATSONX_PROJECT_ID: str = "skills-network"
+
     # Optional settings with defaults
     MAX_FILE_SIZE: int = MAX_FILE_SIZE
     MAX_TOTAL_SIZE: int = MAX_TOTAL_SIZE

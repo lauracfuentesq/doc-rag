@@ -18,9 +18,10 @@ class RetrieverBuilder:
         }
 
         watsonx_embedding = WatsonxEmbeddings(
-            model_id="ibm/slate-125m-english-rtrvr",
-            url="https://us-south.ml.cloud.ibm.com",
-            project_id="skills-network",
+            model_id="intfloat/multilingual-e5-large",
+            url=settings.WATSONX_URL,
+            apikey=settings.WATSONX_API_KEY,
+            project_id=settings.WATSONX_PROJECT_ID,
             params=embed_params
         )
         self.embeddings = watsonx_embedding
